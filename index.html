@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>weluvukeemy</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Icons (Font Awesome) -->
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <style>
+        /* General Reset */
+        body {
+            margin: 0;
+            padding: 0;
+            background: #000; /* Black background */
+            color: white;
+            font-family: 'Source Code Pro', monospace; /* Apply Source Code Pro font */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            overflow: hidden;
+            opacity: 0; /* Start with the page invisible */
+            animation: fadeIn 2s forwards; /* Apply the fadeIn effect */
+        }
+
+        /* Fade-in animation */
+        @keyframes fadeIn {
+            0% {
+                opacity: 0; /* Start as invisible */
+            }
+            100% {
+                opacity: 1; /* Fade in to fully visible */
+            }
+        }
+
+        /* Profile Video */
+        .profile {
+            width: 200px; /* Adjust width */
+            height: 150px; /* Adjust height */
+            border: 2px solid white; /* Added 2px white border */
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
+
+        .profile video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Title */
+        h1 {
+            font-size: 24px;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            font-weight: normal; /* Ensure it's not bold */
+            animation: wave 2s infinite ease-in-out;
+        }
+
+        @keyframes wave {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0); }
+        }
+
+        /* Subtitle */
+        p {
+            font-size: 14px;
+            margin-bottom: 30px;
+            text-align: center;
+            max-width: 300px;
+        }
+
+        /* Social Icons */
+        .social-icons {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .social-icons a {
+            text-decoration: none;
+            color: white;
+            font-size: 24px;
+            transition: color 0.3s, filter 0.3s; /* Add filter transition */
+        }
+
+        .social-icons a:hover {
+            color: gray;
+            filter: blur(3px); /* Apply blur on hover */
+        }
+
+        .social-icons img {
+            width: 24px; /* Adjust the size of the icons */
+            height: 24px;
+            transition: transform 0.3s; /* Smooth transformation on hover */
+        }
+
+        .social-icons a:hover img {
+            transform: scale(1.1); /* Slight zoom effect on hover */
+        }
+
+        /* Footer with Clock */
+        footer {
+            font-size: 12px;
+            margin-top: 30px;
+            color: gray;
+            text-align: center;
+        }
+
+        #clock {
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        /* Remove custom cursor (default system cursor) */
+        body {
+            cursor: default;
+        }
+    </style>
+</head>
+<body>
+    <!-- Profile Video -->
+    <div class="profile">
+        <video id="background-video" autoplay muted loop>
+            <source src="https://cdn.discordapp.com/attachments/1282096897737228289/1314353719588163655/yuactinlikealilhoecmere-ezgif.com-crop-video.mp4?ex=675376ca&is=6752254a&hm=3c815d11db3fb5a00e2f8bfea44c24475cb960e6fc98a19329f1c734436bd6a6&" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+
+    <!-- Audio (Music) -->
+    <audio autoplay loop>
+        <source src="https://cdn.discordapp.com/attachments/1282096897737228289/1314358168977014824/yuactinlikealilhoecmere-ezgif.com-crop-video.mp3?ex=67537aef&is=6752296f&hm=74e57bff5d864e8e5d5c67ddd1294cb4a0ab338209d7e3701a5ed85d127609eb&" type="audio/mp3">
+        Your browser does not support the audio tag.
+    </audio>
+
+    <!-- Title -->
+    <h1>z</h1>
+    <p>1 of 1.. </p>
+
+    <!-- Social Icons -->
+    <div class="social-icons">
+        <a href="https://www.google.com/search?client=opera-gx&q=my+name+is+zkiw+on+discord+u+goofball&sourceid=opera&ie=UTF-8&oe=UTF-8" target="_blank">
+            <img src="https://cdn.discordapp.com/attachments/1282096897737228289/1314340122111639666/phone-46-512.png?ex=67536a20&is=675218a0&hm=220b38b5ebdc49af035d36d607632a238e8fecfeda41aabeb1eae221c56816d8&" alt="Discord">
+        </a>
+        <a href="https://instagram.com" target="_blank">
+            <img src="https://cdn.discordapp.com/attachments/1282096897737228289/1314340264277446726/instagram-512.png?ex=67536a42&is=675218c2&hm=8da5595a812dc1b032206e9565f8f2cecd86b6311ed42d8ab9dc0fdf82f4f2b9&" alt="Instagram">
+        </a>
+        <a href="https://youtube.com" target="_blank">
+            <img src="https://cdn.discordapp.com/attachments/1282096897737228289/1314340691400327249/youtube-512.png?ex=67536aa8&is=67521928&hm=067412db902b1680f042f832bb8886721785ed7fa3e5853538414ab9673f80ea&" alt="YouTube">
+        </a>
+        <a href="https://twitter.com" target="_blank">
+            <img src="https://cdn.discordapp.com/attachments/1282096897737228289/1314340263992365086/twitter-512.png?ex=67536a42&is=675218c2&hm=4879de11dd598845a8eb38549ab6e14dc9683de194f50edfa12b4df761b3aae4&" alt="Twitter">
+        </a>
+        <!-- Roblox Link -->
+        <a href="https://www.roblox.com" target="_blank">
+            <img src="https://cdn.discordapp.com/attachments/1282096897737228289/1314340690771050536/error-4-512.png?ex=67536aa7&is=67521927&hm=7dbb027f8243b860681308782261f61c008dbfc481d34b5ef7a2b5bfe7bcc4a7&" alt="Roblox">
+        </a>
+    </div>
+
+    <!-- Footer with Clock -->
+    <footer>
+        <p id="clock"></p>
+        <p>© 2024 weluvuzki.xyz • all rights reserved :3 </p>
+    </footer>
+
+    <script>
+        // Function to update the clock
+        function updateClock() {
+            const clockElement = document.getElementById('clock');
+            const now = new Date();
+            const options = { hour: '2-digit', minute: '2-digit', second: '2-digit' };
+            clockElement.textContent = now.toLocaleTimeString('en-US', options);
+        }
+
+        // Initialize and update the clock every second
+        setInterval(updateClock, 1000);
+        updateClock();
+
+        // Fade out the video and restart it after it finishes
+        const video = document.getElementById('background-video');
+        video.onended = function() {
+            document.body.style.opacity = 0; // Fade out the page
+            setTimeout(function() {
+                document.body.style.opacity = 1; // Fade back in
+                video.play(); // Restart the video
+            }, 2000); // Wait 2 seconds for fade out before restarting video
+        }
+    </script>
+</body>
+</html>
