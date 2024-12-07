@@ -1,12 +1,12 @@
 {
-  "name": "wsgwsp",
+  "name": "wswgsp",
   "version": "1.0.0",
-  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "vercel dev",
+    "build": "vercel build"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "description": ""
+  "dependencies": {},
+  "engines": {
+    "node": ">=16.x"
+  }
 }
