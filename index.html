@@ -126,14 +126,14 @@
     <!-- Profile Video -->
     <div class="profile">
         <video id="background-video" autoplay muted loop>
-            <source src="hhttps://s6.ezgif.com/tmp/ezgif-6-9ab559d1a3.mp4" type="video/mp4">
+            <source src="bvideo.mp4" type="video/mp4">
             Your browser does not support the video tag.
         </video>
     </div>
 
     <!-- Audio (Music) -->
     <audio autoplay loop>
-        <source src="" type="audio/mp3">
+        <source src="baudio.mp3" type="audio/mp3">
         Your browser does not support the audio tag.
     </audio>
 
@@ -144,20 +144,19 @@
     <!-- Social Icons -->
     <div class="social-icons">
         <a href="https://www.google.com/search?client=opera-gx&q=my+name+is+zkiw+on+discord+u+goofball&sourceid=opera&ie=UTF-8&oe=UTF-8" target="_blank">
-            <img src="https://www.iconsdb.com/icons/download/icon-sets/gray-leather/phone-46-512.png" alt="Discord">
+            <img src="discord.png" alt="Discord">
         </a>
         <a href="https://www.instagram.com/weluvukeemy/" target="_blank">
-            <img src="https://www.iconsdb.com/icons/download/icon-sets/gray-leather/instagram-3-512.png" alt="Instagram">
+            <img src="insta.png" alt="Instagram">
         </a>
         <a href="https://www.google.com/search?client=opera-gx&q=will+add+youtube+acc+soon&sourceid=opera&ie=UTF-8&oe=UTF-8" target="_blank">
-            <img src="https://www.iconsdb.com/icons/download/icon-sets/gray-leather/youtube-512.png" alt="YouTube">
+            <img src="youtube.png" alt="YouTube">
         </a>
         <a href="https://x.com/weluvukeemy" target="_blank">
-            <img src="https://www.iconsdb.com/icons/download/icon-sets/gray-leather/twitter-512.png" alt="Twitter">
+            <img src="twitter.png" alt="Twitter">
         </a>
-        <!-- Roblox Link -->
         <a href="https://www.roblox.com/users/219554096/profile" target="_blank">
-            <img src="https://www.iconsdb.com/icons/download/icon-sets/gray-leather/error-4-512.png" alt="Roblox">
+            <img src="roblox.png" alt="Roblox">
         </a>
     </div>
 
@@ -179,16 +178,6 @@
         // Initialize and update the clock every second
         setInterval(updateClock, 1000);
         updateClock();
-
-        // Fade out the video and restart it after it finishes
-        const video = document.getElementById('background-video');
-        video.onended = function() {
-            document.body.style.opacity = 0; // Fade out the page
-            setTimeout(function() {
-                document.body.style.opacity = 1; // Fade back in
-                video.play(); // Restart the video
-            }, 2000); // Wait 2 seconds for fade out before restarting video
-        }
     </script>
 </body>
 </html>
