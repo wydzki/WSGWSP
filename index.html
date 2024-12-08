@@ -118,8 +118,41 @@
 
         /* Remove custom cursor (default system cursor) */
         body {
-            cursor: default;
+            cursor: none; /* Hide the default cursor */
         }
+
+        /* Custom Cursor and Trail Effect */
+        .cursor {
+            position: absolute;
+            width: 32px; /* Adjust the size of the cursor image */
+            height: 32px;
+            background: url('windows.png') no-repeat center center;
+            background-size: contain;
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            animation: trail 0.6s ease-out infinite;
+        }
+
+        .cursor-trail {
+            position: absolute;
+            width: 16px; /* Adjust the size of the trail image */
+            height: 16px;
+            background: url('windows.png') no-repeat center center;
+            background-size: contain;
+            pointer-events: none;
+            animation: fadeOut 0.6s forwards;
+        }
+
+        @keyframes trail {
+            0% { transform: translate(-50%, -50%); opacity: 1; }
+            100% { transform: translate(-50%, -50%) scale(1.5); opacity: 0; }
+        }
+
+        @keyframes fadeOut {
+            0% { opacity: 1; }
+            100% { opacity: 0; }
+        }
+
     </style>
 </head>
 <body>
@@ -178,6 +211,27 @@
         // Initialize and update the clock every second
         setInterval(updateClock, 1000);
         updateClock();
+
+        // Custom cursor trail effect
+        const cursor = document.createElement('div');
+        cursor.classList.add('cursor');
+        document.body.appendChild(cursor);
+
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = `${e.pageX}px`;
+            cursor.style.top = `${e.pageY}px`;
+
+            const trail = document.createElement('div');
+            trail.classList.add('cursor-trail');
+            document.body.appendChild(trail);
+
+            trail.style.left = `${e.pageX - 8}px`; // Offset to center the trail
+            trail.style.top = `${e.pageY - 8}px`;
+
+            setTimeout(() => {
+                trail.remove(); // Remove the trail after animation
+            }, 600);
+        });
     </script>
 </body>
 </html>
