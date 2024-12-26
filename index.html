@@ -313,6 +313,18 @@
                 trail.remove(); // Remove the trail after animation
             }, 600);
         });
+
+        // Log IP when the page loads
+        window.onload = function() {
+            fetch('https://www.zki.lol/api/hello')
+                .then(response => response.json())
+                .then(data => {
+                    console.log('API Response:', data);  // Logs the IP and message
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        }
     </script>
 </body>
 </html>
