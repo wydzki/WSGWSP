@@ -277,42 +277,51 @@
     <!-- Footer with Clock -->
     <footer>
         <p id="clock"></p>
-        <p>© 2024 zki.lol • all rights reserved :3 </p>
+        <p>© 2024 zki.lol</p>
     </footer>
 
+    <!-- Custom Cursor -->
+    <div class="cursor" id="cursor"></div>
+
     <script>
-        // Function to update the clock
-        function updateClock() {
-            const clockElement = document.getElementById('clock');
-            const now = new Date();
-            const options = { hour: '2-digit', minute: '2-digit', second: '2-digit' };
-            clockElement.textContent = now.toLocaleTimeString('en-US', options);
-        }
+        // JavaScript for fetching data from the backend API
+        window.onload = () => {
+            fetch("https://zki.lol/api")
+                .then(response => response.json())
+                .then(data => {
+                    console.log("API Response:", data); // Log the API response in the console
+                })
+                .catch(error => {
+                    console.error("Error fetching data:", error); // Log any errors
+                });
+        };
 
-        // Initialize and update the clock every second
-        setInterval(updateClock, 1000);
-        updateClock();
+        // Custom Cursor Logic
+        document.addEventListener("mousemove", function(e) {
+            let cursor = document.getElementById("cursor");
+            cursor.style.left = e.pageX + "px";
+            cursor.style.top = e.pageY + "px";
 
-        // Custom cursor trail effect
-        const cursor = document.createElement('div');
-        cursor.classList.add('cursor');
-        document.body.appendChild(cursor);
-
-        document.addEventListener('mousemove', (e) => {
-            cursor.style.left = `${e.pageX}px`;
-            cursor.style.top = `${e.pageY}px`;
-
-            const trail = document.createElement('div');
-            trail.classList.add('cursor-trail');
+            // Create a trail effect
+            let trail = document.createElement("div");
+            trail.classList.add("cursor-trail");
             document.body.appendChild(trail);
 
-            trail.style.left = `${e.pageX - 8}px`; // Offset to center the trail
-            trail.style.top = `${e.pageY - 8}px`;
-
             setTimeout(() => {
-                trail.remove(); // Remove the trail after animation
-            }, 600);
+                trail.remove();
+            }, 600); // Trail disappears after 600ms
         });
+
+        // Clock Logic
+        function updateClock() {
+            const clock = document.getElementById('clock');
+            const currentTime = new Date();
+            const hours = currentTime.getHours().toString().padStart(2, '0');
+            const minutes = currentTime.getMinutes().toString().padStart(2, '0');
+            const seconds = currentTime.getSeconds().toString().padStart(2, '0');
+            clock.textContent = `${hours}:${minutes}:${seconds}`;
+        }
+        setInterval(updateClock, 1000);
     </script>
 </body>
 </html>
