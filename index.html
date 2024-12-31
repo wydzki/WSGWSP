@@ -24,6 +24,7 @@
             overflow: hidden;
             opacity: 0; /* Start with the page invisible */
             animation: fadeIn 2s forwards; /* Apply the fadeIn effect */
+            cursor: none; /* Hide the default cursor */
         }
 
         /* Fade-in animation */
@@ -36,19 +37,72 @@
             }
         }
 
-        /* Profile Video */
-        .profile {
-            width: 200px; /* Adjust width */
-            height: 150px; /* Adjust height */
-            border: 2px solid white; /* Added 2px white border */
-            margin-bottom: 20px;
-            overflow: hidden;
+        /* Custom Cursor and Trail Effect */
+        .cursor {
+            position: absolute;
+            width: 32px;
+            height: 32px;
+            background: url('windows.png') no-repeat center center;
+            background-size: contain;
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            display: none; /* Initially hidden */
         }
 
-        .profile video {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
+        .cursor-trail {
+            position: absolute;
+            width: 16px;
+            height: 16px;
+            background: url('windows.png') no-repeat center center;
+            background-size: contain;
+            pointer-events: none;
+            animation: fadeOut 0.6s forwards;
+        }
+
+        @keyframes fadeOut {
+            0% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+            }
+        }
+
+        /* Snowflake Animation */
+        @keyframes snow {
+            0% {
+                transform: translateY(-100px) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        .snowflake {
+            position: absolute;
+            top: -50px;
+            left: 50%;
+            font-size: 24px;
+            color: white;
+            opacity: 0.8;
+            animation: snow 5s linear infinite;
+        }
+
+        .snowflake:nth-child(2) {
+            animation-delay: 1s;
+            left: 20%;
+        }
+
+        .snowflake:nth-child(3) {
+            animation-delay: 2s;
+            left: 80%;
+        }
+
+        .snowflake:nth-child(4) {
+            animation-delay: 3s;
+            left: 40%;
         }
 
         /* Title */
@@ -57,21 +111,14 @@
             margin-bottom: 10px;
             text-transform: uppercase;
             font-weight: normal; /* Ensure it's not bold */
-            animation: wave 2s infinite ease-in-out;
         }
 
-        @keyframes wave {
-            0% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-            100% { transform: translateY(0); }
-        }
-
-        /* Subtitle */
-        p {
-            font-size: 14px;
-            margin-bottom: 30px;
-            text-align: center;
-            max-width: 300px;
+        /* Image */
+        .profile img {
+            width: 600px;
+            height: auto;
+            margin-bottom: 20px;
+            position: relative;
         }
 
         /* Social Icons */
@@ -81,19 +128,7 @@
             margin-bottom: 30px;
         }
 
-        .social-icons a {
-            text-decoration: none;
-            color: white;
-            font-size: 24px;
-            transition: color 0.3s, filter 0.3s; /* Add filter transition */
-        }
-
-        .social-icons a:hover {
-            color: gray;
-            filter: blur(3px); /* Apply blur on hover */
-        }
-
-        .social-icons img {
+        .social-icons a img {
             width: 24px; /* Adjust the size of the icons */
             height: 24px;
             transition: transform 0.3s; /* Smooth transformation on hover */
@@ -101,6 +136,25 @@
 
         .social-icons a:hover img {
             transform: scale(1.1); /* Slight zoom effect on hover */
+        }
+
+        /* Inquiry Button */
+        .inquiry-buttons {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+        }
+
+        .inquiry-buttons a {
+            text-decoration: none;
+            color: gray; /* Set to gray */
+            font-size: 16px;
+            font-weight: normal; /* Not bold */
+            transition: color 0.3s ease; /* Smooth hover effect */
+        }
+
+        .inquiry-buttons a:hover {
+            color: lightgray;
         }
 
         /* Footer with Clock */
@@ -115,137 +169,22 @@
             font-size: 14px;
             font-weight: bold;
         }
-
-        /* Remove custom cursor (default system cursor) */
-        body {
-            cursor: none; /* Hide the default cursor */
-        }
-
-        /* Custom Cursor and Trail Effect */
-        .cursor {
-            position: absolute;
-            width: 32px; /* Adjust the size of the cursor image */
-            height: 32px;
-            background: url('windows.png') no-repeat center center;
-            background-size: contain;
-            pointer-events: none;
-            transform: translate(-50%, -50%);
-            animation: trail 0.6s ease-out infinite;
-            display: none; /* Initially hidden */
-        }
-
-        .cursor-trail {
-            position: absolute;
-            width: 16px; /* Adjust the size of the trail image */
-            height: 16px;
-            background: url('windows.png') no-repeat center center;
-            background-size: contain;
-            pointer-events: none;
-            animation: fadeOut 0.6s forwards;
-        }
-
-        @keyframes trail {
-            0% { transform: translate(-50%, -50%); opacity: 1; }
-            100% { transform: translate(-50%, -50%) scale(1.5); opacity: 0; }
-        }
-
-        @keyframes fadeOut {
-            0% { opacity: 1; }
-            100% { opacity: 0; }
-        }
-
-        /* Text button */
-        .text-button {
-            margin-top: 20px;
-            font-size: 14px; /* Slightly smaller font size */
-            text-transform: lowercase;
-            font-weight: normal;
-            color: gray; /* Set text color to gray */
-            text-decoration: none;
-            cursor: pointer;
-        }
-
-        .text-button:hover {
-            color: lightgray; /* Change color on hover */
-        }
-
-        /* ECG Monitor */
-        .ecg-monitor {
-            width: 100%;
-            height: 100px;
-            background: black;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-top: 20px;
-            overflow: hidden;
-            position: relative;
-        }
-
-        .ecg-line {
-            position: absolute;
-            top: 50%;
-            left: 0;
-            width: 100%;
-            height: 2px;
-            background: white;
-            animation: heartbeat 2s infinite linear;
-        }
-
-        @keyframes heartbeat {
-            0% { transform: translateX(100%); }
-            100% { transform: translateX(-100%); }
-        }
-
-        .ecg-spike {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            height: 50px;
-            width: 2px;
-            background: white;
-            animation: spike 2s infinite;
-        }
-
-        @keyframes spike {
-            0%, 20%, 100% {
-                height: 2px;
-            }
-            10% {
-                height: 50px;
-            }
-        }
     </style>
-
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-3BE9FSRNBZ"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-
-      gtag('config', 'G-3BE9FSRNBZ');
-    </script>
 </head>
 <body>
-    <!-- Profile Video -->
+    <!-- Snowflakes -->
+    <div class="snowflake">❄</div>
+    <div class="snowflake">❄</div>
+    <div class="snowflake">❄</div>
+    <div class="snowflake">❄</div>
+
+    <!-- Custom Cursor -->
+    <div class="cursor" id="customCursor"></div>
+
+    <!-- Profile Image -->
     <div class="profile">
-        <video id="background-video" autoplay muted loop>
-            <source src="bvideo.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
+        <img src="Hi.png" alt="Hi">
     </div>
-
-    <!-- Audio (Music) -->
-    <audio autoplay loop>
-        <source src="baudio.mp3" type="audio/mp3">
-        Your browser does not support the audio tag.
-    </audio>
-
-    <!-- Title -->
-    <h1>z</h1>
-    <p>1 of 1.. </p>
 
     <!-- Social Icons -->
     <div class="social-icons">
@@ -255,7 +194,7 @@
         <a href="https://www.instagram.com/weluvukeemy/" target="_blank">
             <img src="insta.png" alt="Instagram">
         </a>
-        <a href="https://www.google.com/search?client=opera-gx&q=will+add+youtube+acc+soon&sourceid=opera&ie=UTF-8&oe=UTF-8" target="_blank">
+        <a href="https://www.youtube.com/@maybesori" target="_blank">
             <img src="youtube.png" alt="YouTube">
         </a>
         <a href="https://x.com/weluvukeemy" target="_blank">
@@ -266,19 +205,15 @@
         </a>
     </div>
 
-    <!-- Text Button -->
-    <a href="nga/wsg.html" class="text-button">inquries</a>
-
-    <!-- ECG Monitor -->
-    <div class="ecg-monitor">
-        <div class="ecg-line"></div>
-        <div class="ecg-spike"></div>
+    <!-- Inquiry Button -->
+    <div class="inquiry-buttons">
+        <a href="nga/wsg.html">inquries</a>
     </div>
 
     <!-- Footer with Clock -->
     <footer>
         <p id="clock"></p>
-        <p>© 2024 zki.lol • all rights reserved :3 </p>
+        <p>© 2024 zki.lol • all rights reserved :3 • v1.1</p>
     </footer>
 
     <script>
@@ -294,10 +229,8 @@
         setInterval(updateClock, 1000);
         updateClock();
 
-        // Custom cursor trail effect
-        const cursor = document.createElement('div');
-        cursor.classList.add('cursor');
-        document.body.appendChild(cursor);
+        // Custom Cursor Script
+        const cursor = document.querySelector('#customCursor');
 
         document.addEventListener('mousemove', (e) => {
             cursor.style.left = `${e.pageX}px`;
@@ -314,18 +247,6 @@
                 trail.remove(); // Remove the trail after animation
             }, 600);
         });
-
-        // Log IP when the page loads
-        window.onload = function() {
-            fetch('https://www.zki.lol/api/hello')
-                .then(response => response.json())
-                .then(data => {
-                    console.log('API Response:', data);  // Logs the IP and message
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                });
-        }
     </script>
 </body>
 </html>
