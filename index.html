@@ -3,11 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>weluvukeemy</title>
+    <title>zki</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="fav.png"> <!-- Use this for PNG -->
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;700&display=swap" rel="stylesheet">
     <!-- Icons (Font Awesome) -->
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-3BE9FSRNBZ"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-3BE9FSRNBZ');
+    </script>
     <style>
         /* General Reset */
         body {
@@ -213,7 +223,7 @@
     <!-- Footer with Clock -->
     <footer>
         <p id="clock"></p>
-        <p>© 2024 zki.lol • all rights reserved :3 • v1.1 • لا إله إلا الله</p>
+        <p>© 2024 zki.lol • all rights reserved :3 • v1.12 • لا إله إلا الله</p>
     </footer>
 
     <script>
@@ -247,6 +257,36 @@
                 trail.remove(); // Remove the trail after animation
             }, 600);
         });
+
+        // Title Animation Script
+        const titleText = ["zki", "zki runs", "zki runs you"];
+        let currentTitleIndex = 0;
+        
+        function animateTitle() {
+            document.title = titleText[currentTitleIndex];
+            currentTitleIndex = (currentTitleIndex + 1) % titleText.length; // Reset to 0 after the last one
+        }
+
+        // Ensure that the title changes immediately on page load
+        window.onload = function() {
+            animateTitle();
+            setInterval(animateTitle, 1000); // Change title every 1 second
+            callBackend(); // Call the backend API when the page loads
+        };
+
+        // Function to call the backend API
+        async function callBackend() {
+            try {
+                const response = await fetch('/api/hello');
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                const result = await response.json(); // Assuming your API returns JSON
+                console.log('Backend response:', result); // Log the response or handle it as needed
+            } catch (error) {
+                console.error('Error calling backend:', error);
+            }
+        }
     </script>
 </body>
 </html>
