@@ -1,16 +1,24 @@
-const axios = require('axios');
+const geoip = require('geoip-lite');
 
-module.exports = async (req, res) => {
-    const ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
-    console.log(`logged a niggas ip address: ${ip}`); 
+module.exports = (req, res) => {
+    // Extract the client IP address
+    const ip = (req.headers['x-forwarded-for'] || req.connection.remoteAddress || '').split(',')[0].trim();
 
-    try {
-        const response = await axios.get(`https://ipinfo.io/${ip}?token=YOUR_IPINFO_TOKEN`);
-        const { country, region, city } = response.data;
+    // Validate the IP address
+    if (!ip || ip.startsWith('127.') || ip === '::1') {
+        res.status(400).send('Invalid or internal IP address');
+        return;
+    }
 
-        res.status(200).send(`he's from: ${city}, ${region}, ${country}`);
-    } catch (error) {
-        console.error('couldnt get bros region', error);
-        res.status(500).send('couldnt get bros region');
+    console.log(`Logged IP address: ${ip}`);
+
+    // Get geolocation data using geoip-lite
+    const geo = geoip.lookup(ip);
+
+    if (geo) {
+        const { country, region, city } = geo;
+        res.status(200).send(`Hello! You're from ${city || 'Unknown City'}, ${region || 'Unknown Region'}, ${country || 'Unknown Country'}`);
+    } else {
+        res.status(200).send('Could not determine your location');
     }
 };
