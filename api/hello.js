@@ -1,30 +1,6 @@
-<<<<<<< HEAD
 module.exports = (req, res) => {
     const ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
-    console.log(`logged a nigga's IP address: ${ip}`); // bruh dont even
-=======
-const geoip = require('geoip-lite');
->>>>>>> parent of b079b1f (updated)
+    console.log(`logged a nigga's IP address: ${ip}`); // Log the IP to Vercel logs
 
-module.exports = (req, res) => {
-    // Extract the client IP address
-    const ip = (req.headers['x-forwarded-for'] || req.connection.remoteAddress || '').split(',')[0].trim();
-
-    // Validate the IP address
-    if (!ip || ip.startsWith('127.') || ip === '::1') {
-        res.status(400).send('Invalid or internal IP address');
-        return;
-    }
-
-    console.log(`Logged IP address: ${ip}`);
-
-    // Get geolocation data using geoip-lite
-    const geo = geoip.lookup(ip);
-
-    if (geo) {
-        const { country, region, city } = geo;
-        res.status(200).send(`Hello! You're from ${city || 'Unknown City'}, ${region || 'Unknown Region'}, ${country || 'Unknown Country'}`);
-    } else {
-        res.status(200).send('Could not determine your location');
-    }
+    res.status(200).send('HI wsg wsp sup');
 };
