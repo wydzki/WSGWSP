@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>inquiry</title>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #000;
+            color: #fff;
+            font-family: 'Source Code Pro', monospace;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-transform: lowercase;
+            cursor: none;
+        }
+
+        .cursor {
+            position: absolute;
+            width: 32px;
+            height: 32px;
+            background: url('windows.png') no-repeat center center;
+            background-size: contain;
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            display: none;
+        }
+
+        .cursor-trail {
+            position: absolute;
+            width: 16px;
+            height: 16px;
+            background: url('windows.png') no-repeat center center;
+            background-size: contain;
+            pointer-events: none;
+            animation: fadeOut 0.6s forwards;
+        }
+
+        @keyframes fadeOut {
+            0% { opacity: 1; }
+            100% { opacity: 0; }
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        .container {
+            text-align: center;
+            animation: fadeIn 2s ease-in;
+        }
+
+        .icon-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 50px;
+            margin-top: 20px;
+        }
+
+        .icon {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-size: 14px;
+            color: gray;
+            transition: filter 0.3s ease;
+        }
+
+        .icon img {
+            width: 60px;
+            height: 60px;
+        }
+
+        .icon:hover {
+            filter: blur(2px);
+        }
+
+        .icon span {
+            margin-top: 10px;
+        }
+
+        .icon .copyable {
+            font-size: 12px;
+            color: lightgray;
+            margin-top: 4px;
+            user-select: text;
+            cursor: text;
+        }
+
+        footer {
+            font-size: 12px;
+            color: gray;
+            margin-top: 30px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="cursor" id="cursor"></div>
+    <div class="container">
+        <div class="icon-container">
+            <div class="icon"><img src="btc.png" alt="Bitcoin Icon"><span>btc</span><span class="copyable">bc1qgm200282eqczj6vzeeymw6xv8zr7fya39mfpym</span></div>
+            <div class="icon"><img src="mail.png" alt="Mail Icon"><span>tor mail</span><span class="copyable">keemy@onionmail.org</span></div>
+            <div class="icon"><img src="roblox.png" alt="Roblox Icon"><span>roblox</span><span class="copyable">mayheblessus</span></div>
+            <div class="icon"><img src="insta.png" alt="Instagram Icon"><span>insta</span><span class="copyable">@weluvukeemy</span></div>
+            <div class="icon"><img src="twitter.png" alt="Twitter Icon"><span>twitter</span><span class="copyable">@weluvukeemy</span></div>
+            <div class="icon"><img src="youtube.png" alt="YouTube Icon"><span>youtube</span><span class="copyable">@maybesori</span></div>
+            <div class="icon"><img src="discord.png" alt="Discord Icon"><span>discord</span><span class="copyable">zkiw</span></div>
+            <div class="icon"><img src="telegram.png" alt="Telegram Icon"><span>telegram</span><span class="copyable">@weluvukeemy</span></div>
+        </div>
+        <footer>
+            <p>© 2024 zki.lol • all rights reserved :3 • v1.14</p>
+        </footer>
+    </div>
+    <script>
+        const cursor = document.createElement('div');
+        cursor.classList.add('cursor');
+        document.body.appendChild(cursor);
+
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = `${e.pageX}px`;
+            cursor.style.top = `${e.pageY}px`;
+
+            const trail = document.createElement('div');
+            trail.classList.add('cursor-trail');
+            document.body.appendChild(trail);
+
+            trail.style.left = `${e.pageX - 8}px`;
+            trail.style.top = `${e.pageY - 8}px`;
+
+            setTimeout(() => {
+                trail.remove();
+            }, 600);
+        });
+    </script>
+</body>
+</html>
